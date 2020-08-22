@@ -22,9 +22,9 @@ class SettingViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            self.performSegue(withIdentifier: Constant.Segue.ABOUT_ME, sender: self)
+            self.performSegue(withIdentifier: Constant.Segue.aboutMe, sender: self)
         } else if indexPath.row == 1 {
-            self.performSegue(withIdentifier: Constant.Segue.APPLICATION_INFORMATION, sender: self)
+            self.performSegue(withIdentifier: Constant.Segue.applicationInformation, sender: self)
         }
     }
     

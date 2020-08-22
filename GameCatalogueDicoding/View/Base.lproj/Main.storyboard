@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MIr-dh-KKP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MIr-dh-KKP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -18,6 +18,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="b92-oN-m7W" kind="relationship" relationship="viewControllers" id="juH-Hb-TJs"/>
+                        <segue destination="h3I-dM-wbk" kind="relationship" relationship="viewControllers" id="u1P-7P-Tbk"/>
                         <segue destination="7EB-u9-UUR" kind="relationship" relationship="viewControllers" id="6OY-qq-TL9"/>
                     </connections>
                 </tabBarController>
@@ -29,7 +30,7 @@
         <scene sceneID="a6K-WY-BrN">
             <objects>
                 <viewControllerPlaceholder storyboardName="GameList" id="b92-oN-m7W" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Udu-uy-AcY"/>
+                    <tabBarItem key="tabBarItem" title="Games" image="gamecontroller" catalog="system" id="Udu-uy-AcY"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQM-ZQ-1Ja" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,11 +40,26 @@
         <scene sceneID="Mgs-T9-Box">
             <objects>
                 <viewControllerPlaceholder storyboardName="Settings" id="7EB-u9-UUR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3xV-cm-RSk"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="3xV-cm-RSk"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhU-da-Hfx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-47" y="579"/>
+            <point key="canvasLocation" x="154" y="579"/>
+        </scene>
+        <!--FavoriteList-->
+        <scene sceneID="6a7-7H-5nP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavoriteList" id="h3I-dM-wbk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="b0D-MN-M0l"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OcV-QN-pkW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="579"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gamecontroller" catalog="system" width="128" height="82"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+    </resources>
 </document>

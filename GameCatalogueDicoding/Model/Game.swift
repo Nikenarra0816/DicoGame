@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 struct GameResponse: Codable {
     
@@ -81,4 +82,48 @@ struct Game: Codable {
         
     }
     
+
+    func ConvertToObject() -> GameObj {
+        let gameObj = GameObj()
+        
+        gameObj.id = self.id
+        gameObj.backgroundImage = self.backgroundImage
+        gameObj.name = self.name
+        gameObj.rating = self.rating
+        gameObj.gameDescription = self.description
+        gameObj.website = self.website
+        gameObj.released = self.released
+        
+        return gameObj
+    }
+    
+}
+
+// MARK:- Realm Object
+
+class GameObj: Object {
+    @objc dynamic var id = 0
+    @objc dynamic var backgroundImage = ""
+    @objc dynamic var name = ""
+    @objc dynamic var rating: Float = 0.0
+    @objc dynamic var gameDescription = ""
+    @objc dynamic var website = ""
+    @objc dynamic var released = Date()
+    
+    override static func primaryKey() -> String? {
+          return "id"
+    }
+    
+    func clone() -> GameObj {
+        let game = GameObj()
+        game.id = self.id
+        game.backgroundImage = self.backgroundImage
+        game.name = self.name
+        game.rating = self.rating
+        game.gameDescription = self.gameDescription
+        game.website = self.website
+        game.released = self.released
+        
+        return game
+    }
 }

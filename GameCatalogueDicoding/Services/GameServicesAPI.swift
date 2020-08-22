@@ -14,7 +14,7 @@ class GameServiceApi {
     private init() {}
     
     private let urlSession = URLSession.shared
-    private let baseURL = URL(string: Constant.Url.GAME_URL)!
+    private let baseURL = URL(string: Constant.Url.gameUrl)!
     
     private let jsonDecoder: JSONDecoder = JSONDecoder()
     

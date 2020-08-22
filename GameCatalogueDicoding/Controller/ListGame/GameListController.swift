@@ -15,7 +15,7 @@ class GameListController: UIViewController {
     @IBOutlet weak var gameTableView: PaginatedTableView!
     
     //MARK:- Variables
-    private var games: [Game] = []
+    private var games: [GameObj] = []
     private var query: String = ""
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -24,7 +24,7 @@ class GameListController: UIViewController {
         self.tabBarItem.title = "Game List"
         
         setTableView()
-//        settingSearchBar()
+        
         gameTableView.tableFooterView = UIView()
         setupSearchBar()
         
@@ -77,7 +77,13 @@ extension GameListController: PaginatedTableViewDelegate, PaginatedTableViewData
                     return
                 }
                 
-                self.games.append(contentsOf: game.results)
+                var gameObjs: [GameObj] = []
+                
+                for gameObj in game.results {
+                    gameObjs.append(gameObj.ConvertToObject())
+                }
+                
+                self.games.append(contentsOf: gameObjs)
                 
                 self.gameTableView.reloadData()
             }
@@ -90,7 +96,7 @@ extension GameListController: PaginatedTableViewDelegate, PaginatedTableViewData
         self.gameTableView.paginatedDelegate = self
         self.gameTableView.paginatedDataSource = self
         
-        self.gameTableView.register(UINib(nibName: Constant.Nib.LIST_GAME_CELL, bundle: nil), forCellReuseIdentifier: Constant.Nib.LIST_GAME_IDENTIFIER)
+        self.gameTableView.register(UINib(nibName: Constant.Nib.listGameCell, bundle: nil), forCellReuseIdentifier: Constant.Nib.listGameIdentifier)
         
         self.gameTableView.rowHeight = UITableView.automaticDimension
         self.gameTableView.estimatedRowHeight = 180
@@ -114,15 +120,22 @@ extension GameListController: PaginatedTableViewDelegate, PaginatedTableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let gameCell = tableView.dequeueReusableCell(withIdentifier: Constant.Nib.LIST_GAME_IDENTIFIER, for: indexPath) as? ListGameCell else {
+        guard let gameCell = tableView.dequeueReusableCell(withIdentifier: Constant.Nib.listGameIdentifier, for: indexPath) as? ListGameCell else {
             fatalError("The dequeued cell is not an instance of TableViewCell.")
         }
         
         let row = indexPath.row
-        gameCell.gameTitle.text = self.games[row].name
-        let image = self.games[row].backgroundImage
-        gameCell.gameImage.loadImage(url: image)
-        
+        if !(indexPath.row > games.count) {
+            gameCell.gameTitle.text = self.games[row].name
+            let image = self.games[row].backgroundImage
+            gameCell.gameImage.loadImage(url: image)
+            gameCell.gameRating.rating = Double(self.games[row].rating)
+            
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "dd MMM ,yyyy"
+            
+            gameCell.gameRelease.text = "Released date: "+dateFormatterPrint.string(from: self.games[row].released)
+        }
         
         return gameCell
     }
@@ -131,17 +144,23 @@ extension GameListController: PaginatedTableViewDelegate, PaginatedTableViewData
         if !(indexPath.row > games.count) {
             
             // To Detail Game
-            performSegue(withIdentifier: Constant.Segue.DETAIL_GAME, sender: indexPath.row)
+            performSegue(withIdentifier: Constant.Segue.detailGame, sender: indexPath.row)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constant.Segue.DETAIL_GAME {
+        if segue.identifier == Constant.Segue.detailGame {
             guard let targetController = segue.destination as? GameDetailController else { return }
             
-            let indexRow = sender as? Int
-            targetController.id = games[indexRow ?? 0].id
-            targetController.gameTitle = games[indexRow ?? 0].name
+            if let indexRow = sender as? Int {
+                targetController.id = games[indexRow].id
+                targetController.gameTitle = games[indexRow].name
+                let dateFormatterPrint = DateFormatter()
+                dateFormatterPrint.dateFormat = "dd MMM ,yyyy"
+                
+                targetController.gameRelease = "Released date: " + dateFormatterPrint.string(from: games[indexRow].released)
+            }
+            
         }
     }
     
@@ -163,6 +182,8 @@ extension GameListController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.games = []
         self.query = searchBar.text ?? ""
+        
+        self.view.layoutIfNeeded()
         self.gameTableView.setContentOffset(.zero, animated: true)
         self.gameTableView.loadData(refresh: true)
     }
@@ -170,6 +191,8 @@ extension GameListController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.games = []
         self.query = ""
+        
+        self.view.layoutIfNeeded()
         self.gameTableView.setContentOffset(.zero, animated: true)
         self.gameTableView.loadData(refresh: true)
         

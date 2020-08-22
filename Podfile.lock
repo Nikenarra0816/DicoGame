@@ -6,6 +6,11 @@ PODS:
   - Kingfisher/Core (5.14.1)
   - MBProgressHUD (1.2.0)
   - PaginatedTableView (1.0.1)
+  - Realm (5.3.3):
+    - Realm/Headers (= 5.3.3)
+  - Realm/Headers (5.3.3)
+  - RealmSwift (5.3.3):
+    - Realm (= 5.3.3)
   - SwiftLint (0.40.0)
 
 DEPENDENCIES:
@@ -14,6 +19,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.14)
   - MBProgressHUD (~> 1.2.0)
   - PaginatedTableView
+  - RealmSwift
   - SwiftLint
 
 SPEC REPOS:
@@ -23,6 +29,8 @@ SPEC REPOS:
     - Kingfisher
     - MBProgressHUD
     - PaginatedTableView
+    - Realm
+    - RealmSwift
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -31,8 +39,10 @@ SPEC CHECKSUMS:
   Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
+  Realm: 2d57ea355bf8ca2a0964d6bfb38d28d7ff2addf6
+  RealmSwift: 0a709536ecea30eea1d3c514f6ade2ed078dee3c
   SwiftLint: 4154893c73a4c52d6240195507eb7a3e3c64087e
 
-PODFILE CHECKSUM: edbddd4e03d2f0963166fb51feaf303bd7ed3bd4
+PODFILE CHECKSUM: a93705948d22551b1ee890efaa208d363ade4f88
 
 COCOAPODS: 1.9.3

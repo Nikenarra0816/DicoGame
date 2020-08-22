@@ -10,7 +10,7 @@
         <!--Settings-->
         <scene sceneID="tUz-RL-rFN">
             <objects>
-                <tableViewController title="Settings" id="1Sc-55-Pgb" customClass="SettingViewController" customModule="GameCatalogueDicoding" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Settings" id="1Sc-55-Pgb" customClass="SettingViewController" customModule="DicoGame" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="X7q-VZ-DhV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,7 +73,7 @@
         <!--About Me-->
         <scene sceneID="aBn-0h-c8P">
             <objects>
-                <viewController id="D7T-Ml-G0w" customClass="AboutMeController" customModule="GameCatalogueDicoding" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="D7T-Ml-G0w" customClass="AboutMeController" customModule="DicoGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bDL-e4-8Dy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,16 +125,118 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aGf-5j-OIL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="About Me" id="VT3-Cx-gvH"/>
+                    <navigationItem key="navigationItem" title="About Me" id="VT3-Cx-gvH">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="JnE-dt-q5b">
+                            <connections>
+                                <action selector="btnEditDidTouchUp:" destination="D7T-Ml-G0w" id="eup-7x-1SQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="labelNameText" destination="N4l-H2-Q7Y" id="yL4-r7-67Z"/>
+                        <segue destination="zXb-Tq-084" kind="show" identifier="goToEditProfile" id="GPj-sd-ZGC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyp-Jc-d8u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2784" y="167"/>
+            <point key="canvasLocation" x="3003" y="164"/>
+        </scene>
+        <!--Edit Profile-->
+        <scene sceneID="ucA-YB-0N8">
+            <objects>
+                <viewController id="zXb-Tq-084" customClass="EditAboutController" customModule="DicoGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V59-ZR-KT6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rO7-SL-UoR">
+                                <rect key="frame" x="16" y="120" width="382" height="62.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUp-0W-KHn">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pdi-cW-uHm">
+                                        <rect key="frame" x="0.0" y="28.5" width="382" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Pdi-cW-uHm" secondAttribute="trailing" id="DIL-od-T7S"/>
+                                    <constraint firstAttribute="trailing" secondItem="cUp-0W-KHn" secondAttribute="trailing" id="hjc-Of-BoG"/>
+                                    <constraint firstItem="Pdi-cW-uHm" firstAttribute="leading" secondItem="rO7-SL-UoR" secondAttribute="leading" id="mYi-qH-JQ9"/>
+                                    <constraint firstItem="cUp-0W-KHn" firstAttribute="leading" secondItem="rO7-SL-UoR" secondAttribute="leading" id="wab-AL-tqX"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8zH-ca-Lpc">
+                                <rect key="frame" x="16" y="198.5" width="382" height="62.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website Url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dno-Nj-JbP">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTV-4g-FCn">
+                                        <rect key="frame" x="0.0" y="28.5" width="382" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Dno-Nj-JbP" firstAttribute="leading" secondItem="8zH-ca-Lpc" secondAttribute="leading" id="2eT-Ny-Kmu"/>
+                                    <constraint firstItem="uTV-4g-FCn" firstAttribute="leading" secondItem="8zH-ca-Lpc" secondAttribute="leading" id="M4E-8t-zs4"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dno-Nj-JbP" secondAttribute="trailing" id="reo-jZ-2Jn"/>
+                                    <constraint firstAttribute="trailing" secondItem="uTV-4g-FCn" secondAttribute="trailing" id="syi-2Y-1Mn"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eea-JS-CQz">
+                                <rect key="frame" x="16" y="293" width="382" height="40"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="QJE-iF-QN3"/>
+                                </constraints>
+                                <state key="normal" title="Update Profile">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnUpdateProfile:" destination="B2V-wP-GVn" eventType="touchUpInside" id="gfj-MH-tub"/>
+                                    <action selector="btnUpdateProfileDidTouch:" destination="zXb-Tq-084" eventType="touchUpInside" id="X8s-mm-fh3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rO7-SL-UoR" firstAttribute="leading" secondItem="Jcc-vl-ctP" secondAttribute="leading" constant="16" id="2Pq-em-FaV"/>
+                            <constraint firstItem="Jcc-vl-ctP" firstAttribute="trailing" secondItem="rO7-SL-UoR" secondAttribute="trailing" constant="16" id="9ut-0P-tWT"/>
+                            <constraint firstItem="8zH-ca-Lpc" firstAttribute="top" secondItem="rO7-SL-UoR" secondAttribute="bottom" constant="16" id="Oc2-lS-qBu"/>
+                            <constraint firstItem="8zH-ca-Lpc" firstAttribute="leading" secondItem="Jcc-vl-ctP" secondAttribute="leading" constant="16" id="QsR-1X-PT7"/>
+                            <constraint firstItem="Jcc-vl-ctP" firstAttribute="trailing" secondItem="8zH-ca-Lpc" secondAttribute="trailing" constant="16" id="Ue4-ml-V3c"/>
+                            <constraint firstItem="Jcc-vl-ctP" firstAttribute="trailing" secondItem="Eea-JS-CQz" secondAttribute="trailing" constant="16" id="bHD-wb-Wvc"/>
+                            <constraint firstItem="Eea-JS-CQz" firstAttribute="top" secondItem="8zH-ca-Lpc" secondAttribute="bottom" constant="32" id="eUJ-hi-vI8"/>
+                            <constraint firstItem="Eea-JS-CQz" firstAttribute="leading" secondItem="Jcc-vl-ctP" secondAttribute="leading" constant="16" id="mfu-zT-qMu"/>
+                            <constraint firstItem="rO7-SL-UoR" firstAttribute="top" secondItem="Jcc-vl-ctP" secondAttribute="top" constant="32" id="w0d-gc-PMy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Jcc-vl-ctP"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="sZX-Z3-CGH"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="Pdi-cW-uHm" id="vPe-2B-d4h"/>
+                        <outlet property="urlTextField" destination="uTV-4g-FCn" id="Q3k-Y7-yLz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m3g-XQ-dBG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="B2V-wP-GVn" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3842" y="166"/>
         </scene>
         <!--Application Information-->
         <scene sceneID="rWt-PB-1s6">
             <objects>
-                <viewController id="mZE-uE-2L2" customClass="ApplicationInformationController" customModule="GameCatalogueDicoding" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mZE-uE-2L2" customClass="ApplicationInformationController" customModule="DicoGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S2a-iN-v0z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

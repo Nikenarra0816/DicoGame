@@ -15,27 +15,37 @@ struct Constant {
     }
     
     struct Segue {
-        static let ABOUT_ME = "goToAboutMe"
-        static let APPLICATION_INFORMATION = "goToApplicationInformation"
-        static let DETAIL_GAME = "goToDetailGame"
+        static let aboutMe = "goToAboutMe"
+        static let applicationInformation = "goToApplicationInformation"
+        static let detailGame = "goToDetailGame"
+        static let editProfile = "goToEditProfile"
     }
     
     struct Nib {
-        static let LIST_GAME_CELL = "ListGameCell"
-        static let LIST_GAME_IDENTIFIER = "listGame"
+        static let listGameCell = "ListGameCell"
+        static let listGameIdentifier = "listGame"
         
-        static let EMPTY_LIST_GAME_CELL = "EmptyGameCell"
-        static let EMPTY_LIST_GAME_IDENTIFIER = "emptyGameCell"
+        static let emptyListGameCell = "EmptyGameCell"
+        static let emptyListGameIdentifier = "emptyGameCell"
+    }
+    
+    struct Profile {
+        static let name = "Kukuh Alfian Hanif"
+        static let url = "https://www.kalfian.com/"
     }
     
     struct Url {
-        static let GAME_URL = "https://api.rawg.io/"
-        static let PORTO = "https://www.kalfian.com/"
+        static let gameUrl = "https://api.rawg.io/"
     }
     
     struct Color {
-        static let BLACK = UIColor(named: "BlackColor") ?? UIColor.black
-        static let WHITE = UIColor(named: "WhiteColor") ?? UIColor.white
-        static let GRAY = UIColor(named: "GrayColor") ?? UIColor.gray
+        static let black = UIColor(named: "BlackColor") ?? UIColor.black
+        static let white = UIColor(named: "WhiteColor") ?? UIColor.white
+        static let gray = UIColor(named: "GrayColor") ?? UIColor.gray
+    }
+    
+    struct UserDefaultKey {
+        static let name = "name"
+        static let url = "url"
     }
 }

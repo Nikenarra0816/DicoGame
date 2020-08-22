@@ -11,7 +11,7 @@
         <!--Game List-->
         <scene sceneID="Zxh-jc-yEn">
             <objects>
-                <viewController title="Game List" id="BEk-Lg-CPt" customClass="GameListController" customModule="GameCatalogueDicoding" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Game List" id="BEk-Lg-CPt" customClass="GameListController" customModule="DicoGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gvC-XN-RyV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +43,7 @@
         <!--Game Detail Controller-->
         <scene sceneID="MAK-u9-ZK1">
             <objects>
-                <viewController id="arB-fx-abo" customClass="GameDetailController" customModule="GameCatalogueDicoding" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="detailGame" storyboardIdentifier="detailGame" id="arB-fx-abo" customClass="GameDetailController" customModule="DicoGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="27k-N1-Qzg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,13 +83,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgw-iC-1GU">
-                                                        <rect key="frame" x="16" y="165" width="382" height="36"/>
+                                                        <rect key="frame" x="16" y="134" width="382" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="left" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FTt-xT-UKU">
-                                                        <rect key="frame" x="16" y="209" width="382" height="25"/>
+                                                        <rect key="frame" x="16" y="178" width="382" height="25"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64K-at-gM6" customClass="CosmosView" customModule="Cosmos">
                                                                 <rect key="frame" x="0.0" y="0.0" width="186" height="25"/>
@@ -123,14 +123,23 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33I-Jv-8P9">
+                                                        <rect key="frame" x="16" y="211" width="382" height="23"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.77704115316901412" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="2ZH-Oh-LWS"/>
+                                                    <constraint firstItem="33I-Jv-8P9" firstAttribute="top" secondItem="FTt-xT-UKU" secondAttribute="bottom" constant="8" id="NN4-Jx-n6X"/>
+                                                    <constraint firstItem="33I-Jv-8P9" firstAttribute="leading" secondItem="f42-42-UUH" secondAttribute="leading" constant="16" id="S5s-mK-j6T"/>
+                                                    <constraint firstAttribute="bottom" secondItem="33I-Jv-8P9" secondAttribute="bottom" constant="16" id="VVP-js-sY2"/>
                                                     <constraint firstItem="FTt-xT-UKU" firstAttribute="leading" secondItem="f42-42-UUH" secondAttribute="leading" constant="16" id="aBJ-7K-1d3"/>
                                                     <constraint firstItem="bgw-iC-1GU" firstAttribute="leading" secondItem="f42-42-UUH" secondAttribute="leading" constant="16" id="af6-Ki-T7p"/>
-                                                    <constraint firstAttribute="bottom" secondItem="FTt-xT-UKU" secondAttribute="bottom" constant="16" id="cfp-xa-pK4"/>
                                                     <constraint firstItem="FTt-xT-UKU" firstAttribute="top" secondItem="bgw-iC-1GU" secondAttribute="bottom" constant="8" id="dW7-PN-vdo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="33I-Jv-8P9" secondAttribute="trailing" constant="16" id="dfh-36-Ydo"/>
                                                     <constraint firstAttribute="trailing" secondItem="FTt-xT-UKU" secondAttribute="trailing" constant="16" id="jTS-vw-swJ"/>
                                                     <constraint firstAttribute="trailing" secondItem="bgw-iC-1GU" secondAttribute="trailing" constant="16" id="oh0-nA-xpZ"/>
                                                 </constraints>
@@ -175,13 +184,20 @@
                     </view>
                     <navigationItem key="navigationItem" id="c0l-RY-J0k">
                         <barButtonItem key="backBarButtonItem" title=" " id="yMW-OJ-6vI"/>
+                        <barButtonItem key="rightBarButtonItem" image="star" catalog="system" style="plain" id="QwM-pz-wTt">
+                            <connections>
+                                <action selector="btnFavoriteDidTouch:" destination="arB-fx-abo" id="Ruq-ui-qQH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="btwWebsite" destination="3Fe-Wh-a0l" id="YyK-83-QIa"/>
+                        <outlet property="favoriteButton" destination="QwM-pz-wTt" id="jdR-PL-vF6"/>
                         <outlet property="gameContent" destination="eLJ-JK-T4V" id="ycc-tH-JbT"/>
                         <outlet property="gameImage" destination="pPF-0L-zcs" id="e6j-0A-Uxw"/>
                         <outlet property="ratingLabel" destination="2ot-kV-TWc" id="fJ3-Q4-n5C"/>
                         <outlet property="ratingView" destination="64K-at-gM6" id="d0K-WB-VpB"/>
+                        <outlet property="releaseLabel" destination="33I-Jv-8P9" id="xK9-3s-aYG"/>
                         <outlet property="titleLabel" destination="bgw-iC-1GU" id="giD-4p-I7q"/>
                     </connections>
                 </viewController>
@@ -212,6 +228,7 @@
     <resources>
         <image name="PlaceHolder" width="748" height="747"/>
         <image name="gamecontroller" catalog="system" width="128" height="82"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="BlackColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
